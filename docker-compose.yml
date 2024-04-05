@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: UserServer/Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/resource
+
+  mongo:
+    build:
+      context: .
+      dockerfile: UserServer/Dockerfile.mongo
+    ports:
+      - "27017:27017"
+  
+  webapp:
+    build:
+      context: .
+      dockerfile: Web/Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - gptgen
+      - google
+      - app
+
+  gptgen:
+    build:
+      context: .
+      dockerfile: Chat-GPT4/Dockerfile
+    ports:
+      - "4000:4000"
+
+  google:
+    build:
+      context: .
+      dockerfile: GoolgleMap/Dockerfile
+    ports:
+      - "3000:3000"
+
+
+      

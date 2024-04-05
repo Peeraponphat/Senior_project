@@ -1,0 +1,45 @@
+:local(.close-button) {
+  width: 40px; /* Adjust width and height for desired size */
+  height: 40px;
+  border-radius: 5px; /* Adjust border radius for smaller size */
+  left: 50%;
+  top: 50%;
+  margin-top: -20px; /* Adjust margin based on new size */
+  margin-left: -20px; /* Adjust margin based on new size */
+  position: absolute;
+  display: block;
+  z-index: 200;
+  text-indent: -9999px;
+}
+
+:local(.close-button:before),
+:local(.close-button:after) {
+  content: '';
+  width: 40%; /* Adjust width proportionally to button size */
+  height: 1px; /* Adjust height for thinner line */
+  background: #fff;
+  position: absolute;
+  top: 50%; /* Centered vertically within smaller button */
+  left: 30%; /* Adjust position based on smaller size */
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-out;
+}
+
+:local(.close-button:after) {
+  transform: rotate(45deg);
+  transition: all 0.3s ease-out;
+}
+
+:local(.close-button:hover:before) {
+  transform: rotate(135deg);
+  /* Adjust top and left positions for smooth animation within smaller area */
+  top: 38%;
+  left: 25%;
+}
+
+:local(.close-button:hover:after) {
+  transform: rotate(-135deg);
+  /* Adjust top and left positions for smooth animation within smaller area */
+  top: 62%;
+  left: 25%;
+}
