@@ -44,7 +44,7 @@ function History() {
         const clientId = users._id;
         const response = await axios.get(`http://${IP}:3001/find/plan/${clientId}`);
         if (response.data.length === 0) {
-          // If no plans are available, don't update the state
+
           return;
         }
         setTrips(response.data);
@@ -236,7 +236,7 @@ function History() {
           text-align: center;
         } 
       `}</style>
-      <div className="h-screen">
+      <div className="h-screen bg-white">
         <div id="main">
           <ul id="cards">
             {Array.isArray(trips) && trips.map((trip, index) => (

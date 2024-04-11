@@ -92,8 +92,8 @@ function Form() {
             if (address.trim() !== "" && travelType.trim() !== "") {
 
                 const result = await CallAPI.genChat(travelPlan);
-
-                navigator('/Show', { state: result });
+                const resultWithTravelType = { ...result, travelType };
+                navigator('/Show', { state: resultWithTravelType });
             } else {
                 console.error('Request incorrect.');
             }
@@ -232,9 +232,9 @@ function Form() {
                                                     )}
                                                 </PlacesAutocomplete>
                                                 <p className="text-gray-600 text-xs italic">Where do you want to go?</p>
-                                        </div> 
+                                            </div>
                                         </div>
-                                        
+
                                         <div className="mb-6">
                                             <div
                                                 className="cursor-pointer  transition-all duration-500 hover:translate-y-2 bg-neutral-50 rounded-lg shadow-xl  items-center  gap-2 p-2 before:w-full hover:before:top-0 before:duration-500 before:-top-1 before:h-1 before:bg-purple-200"
@@ -253,19 +253,19 @@ function Form() {
                                                 />
                                             </div>
                                             {showCalendar && (
-                                                    <div className={`relative ${isSmallScreen ? 'w-full' : 'w-auto'} md:max-w-md`}>
-                                                        <div className={`absolute top-0 ${isSmallScreen ? 'left-[-120px]' : 'left-0'} mt-1 z-50`}>
-                                                            <div className="w-full px-3 mb-6 md:mb-0">
-                                                                <Calendar
-                                                                    onChange={handleDateChange}
-                                                                    selectRange
-                                                                    value={selectedDates}
-                                                                    locale="en-US"
-                                                                />
-                                                            </div>
+                                                <div className={`relative ${isSmallScreen ? 'w-full' : 'w-auto'} md:max-w-md`}>
+                                                    <div className={`absolute top-0 ${isSmallScreen ? 'left-[-120px]' : 'left-0'} mt-1 z-50`}>
+                                                        <div className="w-full px-3 mb-6 md:mb-0">
+                                                            <Calendar
+                                                                onChange={handleDateChange}
+                                                                selectRange
+                                                                value={selectedDates}
+                                                                locale="en-US"
+                                                            />
                                                         </div>
                                                     </div>
-                                                )}
+                                                </div>
+                                            )}
                                         </div>
 
                                         <div className="mb-6">
@@ -296,7 +296,7 @@ function Form() {
 
                                         <div className="mb-6">
                                             <div
-                                               className="cursor-pointer overflow-hidden  transition-all duration-500 hover:translate-y-2 bg-neutral-50 rounded-lg shadow-xl  items-center  gap-2 p-2 before:w-full hover:before:top-0 before:duration-500 before:-top-1 before:h-1 before:bg-purple-200"
+                                                className="cursor-pointer overflow-hidden  transition-all duration-500 hover:translate-y-2 bg-neutral-50 rounded-lg shadow-xl  items-center  gap-2 p-2 before:w-full hover:before:top-0 before:duration-500 before:-top-1 before:h-1 before:bg-purple-200"
                                             >
                                                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="numberOfPersons">
                                                     BUDGET

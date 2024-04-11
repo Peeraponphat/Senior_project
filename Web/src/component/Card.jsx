@@ -12,7 +12,7 @@ const Card = () => {
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         if (location && location.state !== null) {
             localStorage.setItem('location', JSON.stringify(location));
@@ -22,7 +22,7 @@ const Card = () => {
 
     const reduxLocation = useSelector(selectLocation);
     const Dataload = reduxLocation?.location?.state;// Using optional chaining to handle null values
-
+    const PlanType=(reduxLocation?.location?.state?.travelType);
     const [backgroundImage, setBackgroundImage] = useState("");
     const [searchData, setSearchData] = useState([]);
     const [responsesArray, setResponsesArray] = useState([]);
@@ -311,13 +311,13 @@ const Card = () => {
                                         Back
                                     </Link>
                                 </div>
-                                <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8 text-center">
-                                    <div className="max-w-xl text-center mx-auto">
-                                        <h1 className="text-3xl font-extrabold sm:text-5xl text-white">
+                                <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8 text-center text-white">
+                                    <div className="max-w-xl text-center mx-auto ">
+                                        <h1 className="text-3xl font-extrabold sm:text-5xl text-white ">
                                             <strong className="block">
                                                 {Dataload && (
                                                     <>
-                                                        {Dataload.TripData[0].PlaceArea.split(',').slice(0)[0].trim()}{' '}
+                                                        {Dataload.TripData[0].PlaceArea.split(',').slice(0)[0].trim().toUpperCase()}{' '}
                                                     </>
                                                 )}
                                             </strong>
@@ -326,6 +326,7 @@ const Card = () => {
                                             {Dataload && Dataload.TripData[0].DayDetail}--
                                             {Dataload && Dataload.TripData[Dataload.TripData.length - 1].DayDetail}
                                         </p>
+                                        Travel-Type: {PlanType.toString()}
                                     </div>
                                 </div>
                             </section>

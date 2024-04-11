@@ -1,43 +1,43 @@
 version: '3.8'
 
 services:
-  app:
+  applo:
     build:
       context: .
       dockerfile: UserServer/Dockerfile
     ports:
       - "3001:3001"
     depends_on:
-      - mongo
+      - mongolo
     environment:
       - MONGO_URI=mongodb://mongo:27017/resource
 
-  mongo:
+  mongolo:
     build:
       context: .
       dockerfile: UserServer/Dockerfile.mongo
     ports:
       - "27017:27017"
   
-  webapp:
+  webapplo:
     build:
       context: .
       dockerfile: Web/Dockerfile
     ports:
       - "5173:80"
     depends_on:
-      - gptgen
-      - google
-      - app
+      - gptgenlo
+      - googlelo
+      - applo
 
-  gptgen:
+  gptgenlo:
     build:
       context: .
       dockerfile: Chat-GPT4/Dockerfile
     ports:
       - "4000:4000"
 
-  google:
+  googlelo:
     build:
       context: .
       dockerfile: GoolgleMap/Dockerfile

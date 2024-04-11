@@ -257,7 +257,7 @@ function Base() {
   };
   return (
 
-    <div className="relative flex flex-col lg:flex-row">
+    <div className="relative flex flex-col lg:flex-row bg-white">
       <div className="lg:w-3/5 md:w-3/5 sm:w-full">
         <nav className="container w-full mx-auto flex flex-col">
           <div className="px-5 xl:px-12 py-6 flex w-full items-center justify-between">

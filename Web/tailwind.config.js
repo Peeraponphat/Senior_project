@@ -6,12 +6,13 @@ export default {
     "node_modules/flowbite-react/lib/esm/**/*.js"
   ],
   theme: {
-    extend: {backgroundColor: {
-      'Medimturquoise': '#48D1CC',
-      'LIGHTBLUE': '#ADD8E6',
-      'DEEPSKYBLUE': '#00BFFF',
-    },
-    },
+    extend: {
+      backgroundColor: {
+        'Medimturquoise': '#48D1CC',
+        'LIGHTBLUE': '#ADD8E6',
+        'DEEPSKYBLUE': '#00BFFF',
+      }
+    }
   },
   plugins: [require('flowbite/plugin')],
 }

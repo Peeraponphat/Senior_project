@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 app.use(cookieParser());
-mongoose.connect("mongodb://mongo:27017/resource", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/resource", { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 const verifyUser = (req, res, next) => {
@@ -221,7 +221,7 @@ app.post('/register', async (req, res) => {
   try {
     console.log(req.body);
     const randomKey = uuidv4();
-    const currentTimePlus30Minutes = moment().add(30, 'minutes').toDate();
+    const currentTimePlus30Minutes = moment().add(5, 'minutes').toDate();
     const { name, username, email, password, repeatpassword } = req.body;
 
     // Generate verification token
@@ -263,7 +263,7 @@ function sendVerificationEmail(email, token) {
     html: `
       <p>Hello,</p>
       <p>Please click the following link to verify your email address:</p>
-      <p><a href="http://${process.env.IP}:5173/verify/${token}">Verify Email</a></p>
+      <p><a href="http://${process.env.IP}:4173/verify/${token}">Verify Email</a></p>
       <p>If you did not request this, please ignore this email.</p>
     `
   };
@@ -326,7 +326,7 @@ app.post('/forgotpassword', async (req, res) => {
           from: 'kkmoshi01@gmail.com',
           to: email,
           subject: 'Reset Password Link',
-          text: `http://${process.env.IP}:5173/ResetPassword/${user.id}/${token}`
+          text: `http://${process.env.IP}:4173/ResetPassword/${user.id}/${token}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
@@ -376,7 +376,7 @@ const deleteUnverifiedUsers = async () => {
 };
 
 // Run deleteUnverifiedUsers every 5 minutes (300,000 milliseconds)
-setInterval(deleteUnverifiedUsers, 5 * 60 * 1000);
+setInterval(deleteUnverifiedUsers, 2 * 60 * 1000);
 
 app.listen(3001, () => {
   console.log("server is running 3001")

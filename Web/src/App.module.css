@@ -5,6 +5,7 @@
   text-align: center;
   height: 100vh;
   flex-direction: column;
+  background:white;
 }
 .spaceBetween {
   display: flex;

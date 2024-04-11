@@ -82,7 +82,7 @@ function ShowDetailUser() {
     if (!user) return <div>Loading...</div>;
 
     return (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex justify-center items-center h-full bg-white">
             <div className="border-b-2 block md:flex">
                 <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
                     <div className="flex justify-between">
